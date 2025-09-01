@@ -18,7 +18,24 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Note HUB',
-  description: 'Created in GoIT',
+  description:
+    'Application for creating, viewing and editing notes. Created in GoIT',
+  openGraph: {
+    title: 'Note HUB',
+    description:
+      'Application for creating, viewing and editing notes. Created in GoIT',
+    url: 'https://my-products.com/welcome',
+    siteName: 'Note HUB app',
+    images: [
+      {
+        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Note HUB app image',
+      },
+    ],
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
