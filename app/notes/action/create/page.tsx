@@ -1,5 +1,10 @@
 import css from './CreateNote.module.css';
 import { getTags } from '@/lib/api';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
 
 import { Metadata } from 'next';
 import CreateNoteClient from './CreateNote.client';
@@ -23,12 +28,20 @@ export const metadata: Metadata = {
 };
 
 export default async function CreateNote() {
-  const tags: string[] = await getTags();
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ['tags'],
+    queryFn: getTags,
+  });
+
   return (
     <main className={css.main}>
       <div className={css.container}>
         <h1 className={css.title}>Create note</h1>
-        <CreateNoteClient tags={tags} />
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <CreateNoteClient />
+        </HydrationBoundary>
       </div>
     </main>
   );
