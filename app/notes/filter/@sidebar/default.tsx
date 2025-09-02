@@ -2,8 +2,8 @@ import { getTags } from '@/lib/api';
 import css from './SidebarNotes.module.css';
 import Link from 'next/link';
 
-export default function SidebarNotes() {
-  const tags = getTags();
+export default async function SidebarNotes() {
+  const tags = await getTags();
   return (
     <>
       <Link href="/notes/action/create" className={css.menuLink}>

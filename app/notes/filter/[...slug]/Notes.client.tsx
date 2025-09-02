@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useDebouncedCallback } from 'use-debounce';
 import toast, { Toaster } from 'react-hot-toast';
+import Link from 'next/link';
 import { fetchNotes, NotesHttpResponse } from '@/lib/api';
 
 import css from './NotesPage.module.css';
@@ -60,6 +61,11 @@ export default function AppClient({ tag }: AppClientProps) {
               setCurrentPage={setCurrentPage}
             />
           )}
+          {
+            <Link className={css.button} href="/notes/action/create">
+              Create note +
+            </Link>
+          }
         </header>
         {isError ? (
           <ErrorMessage />

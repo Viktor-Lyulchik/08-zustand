@@ -3,10 +3,10 @@ import css from './Home.module.css';
 
 export const metadata: Metadata = {
   title: '404 | Page Not Found',
-  description: "This page doesn'n found",
+  description: 'This page was not found',
   openGraph: {
     title: '404 | Page Not Found',
-    description: "This page doesn'n found",
+    description: 'This page was not found',
     url: 'https://08-zustand-amber-two.vercel.app/',
     images: [
       {

@@ -17,7 +17,7 @@ interface FetchNotesParam {
 
 export const fetchNotes = async (
   query: string,
-  page: number,
+  page: number = 1,
   tag?: string
 ): Promise<NotesHttpResponse> => {
   const params: FetchNotesParam = {
@@ -83,6 +83,18 @@ export const deleteNote = async (id: NoteId): Promise<Note> => {
   return response.data;
 };
 
-export const getTags = (): string[] => {
-  return ['All', 'Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
+export const ALL_TAGS = [
+  'All',
+  'Todo',
+  'Work',
+  'Personal',
+  'Meeting',
+  'Shopping',
+];
+
+export const getTags = async (): Promise<string[]> => {
+  const { notes } = await fetchNotes('');
+  return [...ALL_TAGS, ...notes.map(note => note.tag)].filter(
+    (tag, index, array) => array.indexOf(tag) === index
+  );
 };

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CreateNote() {
-  const tags: string[] = getTags();
+  const tags: string[] = await getTags();
   return (
     <main className={css.main}>
       <div className={css.container}>

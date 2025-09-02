@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { getTags } from '@/lib/api';
 import TagsMenu from '../TagsMenu/TagsMenu';
 
-const Header = () => {
-  const tags = getTags();
+const Header = async () => {
+  const tags = await getTags();
   return (
     <header className={css.header}>
       <Link className="headerLink" href="/" aria-label="Home">
